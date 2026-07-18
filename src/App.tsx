@@ -8,7 +8,12 @@ import VlogCodeKids from './pages/CodeKids'
 import IzaAryOGithubPlaceholder from './pages/IzaAryGithubPlaceholder'
 import GeneralGithubPlaceholder from './pages/GeneralGithubPlaceholder'
 
+import { useVisitTracker } from './hooks/useVisiteTracker';
+
 export default function App() {
+
+  useVisitTracker();
+
   return (
     <AppProvider>
       <Routes>
