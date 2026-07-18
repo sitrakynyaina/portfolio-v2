@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Palette rétro inspirée de la maquette : crème, orange, marron, doré */
+    --background: 38 46% 88%;          /* crème */
+    --foreground: 27 55% 16%;          /* marron encre */
+    --card: 42 55% 93%;                /* crème clair */
+    --card-foreground: 27 55% 16%;
+    --popover: 42 55% 93%;
+    --popover-foreground: 27 55% 16%;
+    --primary: 30 75% 51%;             /* orange */
+    --primary-foreground: 42 55% 96%;
+    --secondary: 36 40% 82%;           /* sable */
+    --secondary-foreground: 27 55% 16%;
+    --muted: 36 38% 84%;
+    --muted-foreground: 27 30% 38%;
+    --accent: 44 78% 60%;              /* doré */
+    --accent-foreground: 27 55% 16%;
+    --destructive: 8 70% 48%;
+    --destructive-foreground: 42 55% 96%;
+    --border: 27 55% 16%;
+    --input: 27 55% 16%;
+    --ring: 30 75% 51%;
+    --radius: 1rem;
+
+    /* Couleurs personnalisées du thème rétro */
+    --ink: 27 55% 16%;
+    --ink-soft: 27 32% 35%;
+    --cream: 38 46% 88%;
+    --cream-light: 42 55% 93%;
+    --sand: 36 40% 82%;
+    --orange: 30 75% 51%;
+    --orange-deep: 26 82% 40%;
+    --gold: 44 78% 60%;
+  }
+
+  .dark {
+    /* Mode sombre : espresso chaleureux, toujours dans l'esprit rétro */
+    --background: 24 42% 9%;
+    --foreground: 40 45% 90%;
+    --card: 26 38% 13%;
+    --card-foreground: 40 45% 90%;
+    --popover: 26 38% 13%;
+    --popover-foreground: 40 45% 90%;
+    --primary: 30 78% 55%;
+    --primary-foreground: 24 42% 10%;
+    --secondary: 26 30% 20%;
+    --secondary-foreground: 40 45% 90%;
+    --muted: 26 28% 18%;
+    --muted-foreground: 38 22% 62%;
+    --accent: 44 78% 60%;
+    --accent-foreground: 24 42% 10%;
+    --destructive: 8 65% 52%;
+    --destructive-foreground: 40 45% 96%;
+    --border: 40 45% 90%;
+    --input: 40 45% 90%;
+    --ring: 30 78% 55%;
+
+    --ink: 40 45% 90%;
+    --ink-soft: 38 22% 65%;
+    --cream: 24 42% 9%;
+    --cream-light: 26 38% 13%;
+    --sand: 26 30% 20%;
+    --orange: 30 78% 55%;
+    --orange-deep: 30 80% 62%;
+    --gold: 44 78% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  }
+  ::selection {
+    background: hsl(var(--gold));
+    color: hsl(27 55% 16%);
+  }
+}
+
+@layer components {
+  /* Affichage "blocky" rétro comme le lettrage de la maquette */
+  .font-display {
+    font-family: 'Archivo Black', 'Space Grotesk', sans-serif;
+    letter-spacing: -0.01em;
+  }
+
+  /* Carte rétro : bordure épaisse + ombre portée dure décalée */
+  .retro-card {
+    @apply border-2 rounded-2xl bg-card;
+    border-color: hsl(var(--ink));
+    box-shadow: 6px 6px 0 0 hsl(var(--ink));
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+  }
+  .retro-card:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 9px 9px 0 0 hsl(var(--ink));
+  }
+
+  .retro-btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border-2 px-4 py-2 text-sm font-semibold;
+    border-color: hsl(var(--ink));
+    box-shadow: 3px 3px 0 0 hsl(var(--ink));
+    transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.18s ease, background-color 0.18s ease;
+  }
+  .retro-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 0 hsl(var(--ink));
+  }
+  .retro-btn:active {
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px 0 0 hsl(var(--ink));
+  }
+
+  /* Badge/pilule style "sticker" de la maquette */
+  .retro-pill {
+    @apply inline-flex items-center gap-1.5 rounded-full border-2 px-3 py-1 text-xs font-bold uppercase tracking-wide;
+    border-color: hsl(var(--ink));
+  }
+
+  .retro-chip {
+    @apply inline-flex items-center rounded-lg border px-2.5 py-1 text-xs font-semibold;
+    border-color: hsl(var(--ink) / 0.55);
+    background: hsl(var(--sand) / 0.55);
+    color: hsl(var(--ink));
+  }
+
+  /* Séparateur en pointillés façon carnet de croquis */
+  .sketch-divider {
+    border-top: 3px dashed hsl(var(--ink) / 0.35);
+  }
+
+  /* Texture papier légère */
+  .paper-texture {
+    background-image: radial-gradient(hsl(var(--ink) / 0.06) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+
+  /* Titre de section avec surlignage doré */
+  .section-kicker {
+    @apply retro-pill;
+    background: hsl(var(--gold));
+    color: hsl(27 55% 16%);
+    box-shadow: 3px 3px 0 0 hsl(var(--ink));
+  }
+
+  /* Animation d'apparition au scroll */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0) rotate(var(--float-rot, 0deg)); }
+    50% { transform: translateY(-10px) rotate(var(--float-rot, 0deg)); }
+  }
+  .animate-float-slow {
+    animation: float-slow 5s ease-in-out infinite;
+  }
+
+  @keyframes marquee-x {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .animate-marquee {
+    animation: marquee-x 28s linear infinite;
+  }
+}
