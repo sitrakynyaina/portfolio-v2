@@ -24,17 +24,18 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-cream/90 dark:bg-background/90 backdrop-blur-md' : 'bg-transparent'
-      }`}
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${scrolled ? 'bg-cream/90 dark:bg-background/90 backdrop-blur-md' : 'bg-transparent'
+        }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
         {/* Logo façon sticker */}
         <a
-          href="#accueil"
-          className="font-display text-lg tracking-tight text-ink -rotate-2 rounded-xl border-2 border-ink bg-gold px-3 py-1 shadow-[3px_3px_0_0_hsl(var(--ink))] transition-transform hover:rotate-0"
         >
-          L<span className="text-orange-deep">.</span>A
+          <img
+            src="/assets/icon/str_n_aina.png"
+            alt="Mon Logo Perso"
+            className="h-12 w-auto" // Aligne la hauteur (h-8 = 32px), la largeur s'adapte automatiquement
+          />
         </a>
 
         {/* Liens desktop */}
@@ -58,9 +59,8 @@ export default function Navbar() {
               <button
                 key={l}
                 onClick={() => setLang(l)}
-                className={`px-3 py-1.5 text-xs font-bold uppercase transition-colors ${
-                  lang === l ? 'bg-orange text-cream-light' : 'text-ink-soft hover:bg-sand'
-                }`}
+                className={`px-3 py-1.5 text-xs font-bold uppercase transition-colors ${lang === l ? 'bg-orange text-cream-light' : 'text-ink-soft hover:bg-sand'
+                  }`}
                 aria-pressed={lang === l}
               >
                 {l}
@@ -90,9 +90,8 @@ export default function Navbar() {
 
       {/* Menu mobile */}
       <div
-        className={`overflow-hidden border-b-2 border-ink bg-cream transition-all duration-300 dark:bg-background lg:hidden ${
-          open ? 'max-h-96' : 'max-h-0'
-        }`}
+        className={`overflow-hidden border-b-2 border-ink bg-cream transition-all duration-300 dark:bg-background lg:hidden ${open ? 'max-h-96' : 'max-h-0'
+          }`}
       >
         <ul className="space-y-1 px-4 py-3">
           {anchors.map(({ id, key }) => (
