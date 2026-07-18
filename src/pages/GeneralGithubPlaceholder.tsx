@@ -1,4 +1,3 @@
-import React from 'react';
 import { Lock, Users, Terminal } from 'lucide-react';
 import { useApp } from '@/context/AppContext';
 

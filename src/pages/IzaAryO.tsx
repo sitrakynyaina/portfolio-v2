@@ -8,7 +8,6 @@ import {
   Map,
   Mic,
   Play,
-  Rocket,
   Sparkles,
   Users,
 } from 'lucide-react'
