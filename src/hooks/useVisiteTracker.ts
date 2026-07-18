@@ -18,6 +18,7 @@ export function useVisitTracker() {
 
           if (!error) {
             sessionStorage.setItem('portfolio_tracked', 'true');
+            console.log("okkkkkkkk");
           }
         }
       } catch (err) {
