@@ -1,26 +1,26 @@
 import { useEffect } from 'react';
-import { supabase } from '@/lib/supabase'; // Ajuste le chemin selon ton projet
+import { supabase } from '@/lib/supabase';
 
 export function useVisitTracker() {
   useEffect(() => {
     const trackVisit = async () => {
       try {
-        // Bloque le double-comptage si l'utilisateur rafraîchit la page
         const hasVisitedThisSession = sessionStorage.getItem('portfolio_tracked');
 
         if (!hasVisitedThisSession) {
-          // Insère une ligne anonyme dans ta table Supabase
-          const { error } = await supabase
-            .from('page_visits')
-            .insert([{}]);
+          // Récupère la date locale du visiteur au format YYYY-MM-DD
+          const today = new Date().toISOString().split('T')[0];
 
-          // Si l'insertion réussit, on marque la session comme enregistrée
+          // Appel de la fonction SQL stockée sur Supabase
+          const { error } = await supabase.rpc('increment_daily_visit', {
+            target_date: today
+          });
+
           if (!error) {
             sessionStorage.setItem('portfolio_tracked', 'true');
           }
         }
       } catch (err) {
-        // Reste silencieux en production pour ne pas impacter l'expérience
         console.error('Erreur tracking:', err);
       }
     };
