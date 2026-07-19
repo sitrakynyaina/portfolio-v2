@@ -1,4 +1,5 @@
-import { ArrowDown, Braces, Cloud, Cpu, Github, Linkedin, Mail, Sparkles, Terminal } from 'lucide-react'
+// 1. Ajoute "Download" dans tes imports en haut du fichier
+import { ArrowDown, Braces, Cloud, Cpu, Download, Github, Linkedin, Mail, Sparkles, Terminal } from 'lucide-react'
 import { useApp } from '@/context/AppContext'
 import { profile } from '@/data/portfolio'
 
@@ -23,7 +24,7 @@ export default function Hero() {
           
           {/* COLONNE GAUCHE : Textes & Actions (Prend 7 colonnes sur 12) */}
           <div className="flex flex-col items-start lg:col-span-7">
-            {/* Sticker HELLO! incliné, comme sur la maquette */}
+            {/* Sticker HELLO! incliné */}
             <div className="animate-float-slow inline-block -rotate-6 rounded-lg border-2 border-ink bg-ink px-4 py-1.5 font-display text-sm tracking-widest text-cream-light shadow-[4px_4px_0_0_hsl(var(--gold))] dark:bg-card dark:text-ink" style={{ '--float-rot': '-6deg' } as React.CSSProperties}>
               {t.hero.hello}
             </div>
@@ -39,7 +40,7 @@ export default function Hero() {
               </span>
             </h1>
 
-            {/* Pilule de rôle, bordure dorée comme la maquette */}
+            {/* Pilule de rôle */}
             <div className="mt-8 inline-flex max-w-full items-center gap-2 rounded-full border-[3px] border-gold bg-ink px-5 py-2.5 shadow-[4px_4px_0_0_hsl(var(--ink))] dark:bg-card">
               <Sparkles size={16} className="shrink-0 text-gold" />
               <span className="truncate text-xs font-bold uppercase tracking-wider text-cream-light dark:text-ink sm:text-sm">
@@ -52,16 +53,28 @@ export default function Hero() {
               {t.hero.bio}
             </p>
 
-            {/* CTA + réseaux */}
+            {/* CTA + réseaux (Bouton CV ajouté ici) */}
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <a href="#projets" className="retro-btn bg-orange text-cream-light">
                 {t.hero.ctaProjects}
                 <ArrowDown size={16} />
               </a>
+              
+              {/* NOUVEAU : Bouton Télécharger le CV */}
+              <a 
+                href="cv-AndriantsiferanaLandry.pdf" 
+                download="cv-AndriantsiferanaLandry.pdf" 
+                className="retro-btn bg-gold text-ink"
+              >
+                <Download size={16} />
+                {t.hero.ctaCv || "Mon CV"}
+              </a>
+
               <a href="#contact" className="retro-btn bg-card text-ink">
                 <Mail size={16} />
                 {t.hero.ctaContact}
               </a>
+
               <div className="flex gap-2">
                 <a
                   href={profile.github}
@@ -97,11 +110,9 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* COLONNE DROITE : Cadre Photo Rétro (Prend 5 colonnes sur 12) */}
+          {/* COLONNE DROITE : Cadre Photo Rétro */}
           <div className="flex justify-center w-full mt-8 lg:mt-0 lg:col-span-5">
             <div className="relative w-full max-w-[340px] sm:max-w-[380px] border-[3px] border-ink bg-cream p-3 rounded-2xl shadow-[8px_8px_0_0_rgba(0,0,0,1)] rotate-2 hover:rotate-0 transition-transform duration-300 ease-in-out select-none">
-              
-              {/* Conteneur interne de l'image */}
               <div className="w-full aspect-[3/4] overflow-hidden border-2 border-ink rounded-xl bg-ink/5">
                 <img 
                   src="/assets/portfolio/profil.jpeg" 
@@ -109,8 +120,6 @@ export default function Hero() {
                   className="w-full h-full object-cover object-center transition-all duration-300"
                 />
               </div>
-
-              {/* Petit Sticker Rétro de Champion (DevFest 2025) */}
               <div className="absolute -bottom-3 -left-4 -rotate-6 rounded-lg border-2 border-ink bg-gold px-3.5 py-1.5 font-display text-xs tracking-wider text-ink shadow-[3px_3px_0_0_rgba(0,0,0,1)]">
                 Str_N_Aina
               </div>

@@ -402,6 +402,7 @@ export const translations = {
       ctaContact: 'Me contacter',
       badge: 'Full-Stack • Cloud • Algo',
       available: 'Disponible pour opportunités',
+      ctaCv: 'Telecharger CV'
     },
     sections: {
       projects: 'Projets',
@@ -449,6 +450,7 @@ export const translations = {
       ctaContact: 'Get in touch',
       badge: 'Full-Stack • Cloud • Algo',
       available: 'Open to opportunities',
+      ctaCv: 'Download CV'
     },
     sections: {
       projects: 'Projects',

@@ -1,5 +1,6 @@
+// 1. Ajoute "Download" dans tes imports en haut du fichier
 import { useEffect, useState } from 'react'
-import { Menu, Moon, Sun, X } from 'lucide-react'
+import { Download, Menu, Moon, Sun, X } from 'lucide-react'
 import { useApp } from '@/context/AppContext'
 
 const anchors = [
@@ -29,12 +30,11 @@ export default function Navbar() {
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
         {/* Logo façon sticker */}
-        <a
-        >
+        <a href="#accueil">
           <img
             src="/assets/icon/str_n_aina.png"
             alt="Mon Logo Perso"
-            className="h-12 w-auto" // Aligne la hauteur (h-8 = 32px), la largeur s'adapte automatiquement
+            className="h-12 w-auto"
           />
         </a>
 
@@ -68,6 +68,17 @@ export default function Navbar() {
             ))}
           </div>
 
+          {/* NOUVEAU : Bouton Télécharger CV version Desktop (Masqué sur mobile) */}
+          <a
+            href="cv-AndriantsiferanaLandry.pdf"
+            download="cv-AndriantsiferanaLandry.pdf"
+            className="retro-btn bg-gold !px-2.5 !py-1.5 text-ink hidden sm:inline-flex"
+            title={t.hero.ctaCv || "Mon CV"}
+            aria-label="Download CV"
+          >
+            <Download size={16} />
+          </a>
+
           {/* Toggle thème sombre / clair */}
           <button
             onClick={toggleDark}
@@ -90,7 +101,7 @@ export default function Navbar() {
 
       {/* Menu mobile */}
       <div
-        className={`overflow-hidden border-b-2 border-ink bg-cream transition-all duration-300 dark:bg-background lg:hidden ${open ? 'max-h-96' : 'max-h-0'
+        className={`overflow-hidden border-b-2 border-ink bg-cream transition-all duration-300 dark:bg-background lg:hidden ${open ? 'max-h-[420px]' : 'max-h-0'
           }`}
       >
         <ul className="space-y-1 px-4 py-3">
@@ -105,6 +116,19 @@ export default function Navbar() {
               </a>
             </li>
           ))}
+          
+          {/* NOUVEAU : Lien CV dans le menu Mobile */}
+          <li className="pt-2">
+            <a
+              href="/assets/cv-landry.pdf"
+              download="CV_Landry_Andriantsiferana.pdf"
+              onClick={() => setOpen(false)}
+              className="flex items-center justify-center gap-2 rounded-xl border-2 border-ink bg-gold px-3 py-2.5 font-bold text-ink shadow-[3px_3px_0_0_rgba(0,0,0,1)] text-center transition-transform active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
+            >
+              <Download size={16} />
+              {t.hero.ctaCv || "Télécharger mon CV"}
+            </a>
+          </li>
         </ul>
       </div>
     </header>
