@@ -12,7 +12,6 @@ import {
   Zap,
 } from 'lucide-react'
 import { useApp } from '@/context/AppContext'
-import { profile } from '@/data/portfolio'
 import { vlogFayze, type VlogPhase, type VlogScreenshot } from '@/data/vlogFayze'
 import SectionHeader from '@/components/SectionHeader'
 import { useReveal } from '@/hooks/useReveal'
