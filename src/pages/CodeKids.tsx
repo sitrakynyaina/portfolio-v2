@@ -220,7 +220,7 @@ export default function VlogCodeKids() {
             <ArrowLeft size={16} />
             {content.ui.backToProjects}
           </Link>
-          <a href={profile.github} target="_blank" rel="noreferrer" className="retro-btn bg-card text-ink">
+          <a href="https://github.com/HerizoRand/Devhunt2025.git" target="_blank" rel="noreferrer" className="retro-btn bg-card text-ink">
             <Github size={16} />
             {t.sections.githubBtn}
           </a>
